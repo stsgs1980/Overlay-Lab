@@ -33,6 +33,6 @@ export function bringToEnd<T extends { id: string }>(list: T[], id: string): T[]
 
 /** «⌘K» на macOS, «Ctrl K» на остальных платформах */
 export function shortcutLabel(key: string): string {
-  const isMac = typeof navigator !== "undefined" && /Mac|iPhone|iPad/.test(navigator.platform);
+  const isMac = typeof navigator !== "undefined" && /Mac|iPhone|iPad/.test(navigator.userAgent);
   return isMac ? `⌘${key}` : `Ctrl ${key}`;
 }

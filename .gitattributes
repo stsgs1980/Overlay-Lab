@@ -19,6 +19,9 @@
 *.md text eol=lf
 *.xml text eol=lf
 
+# Enforce LF for stylesheets
+*.css text eol=lf
+
 # Enforce LF for git hooks
 .husky/* text eol=lf
 
