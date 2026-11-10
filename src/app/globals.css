@@ -23,25 +23,6 @@
   color-scheme: dark;
 }
 
-.light {
-  --bg: #f4f4ef;
-  --panel: #fff;
-  --panel-2: #fafaf7;
-  --panel-soft: #eceee8;
-  --header-bg: rgb(244 244 239 / 82%);
-  --text: #1d1d21;
-  --text-dim: #52525b;
-  --text-faint: #8e8e96;
-  --border: rgb(24 24 27 / 12%);
-  --border-strong: rgb(24 24 27 / 24%);
-  --btn-2: rgb(24 24 27 / 6%);
-  --btn-2-hover: rgb(24 24 27 / 10%);
-  --btn-ghost: rgb(24 24 27 / 5%);
-  --grid-line: rgb(24 24 27 / 9%);
-
-  color-scheme: light;
-}
-
 /* --- База -------------------------------------------------- */
 body {
   background: var(--bg);
