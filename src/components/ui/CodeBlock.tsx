@@ -42,7 +42,7 @@ export function CodeBlock({ code, filename = "Pattern.tsx" }: CodeBlockProps): J
           onClick={() => {
             void copy();
           }}
-          className="ml-auto flex h-6 items-center gap-1 rounded-md px-1.5 font-mono text-[10px] uppercase tracking-wider text-zinc-500 transition-colors hover:bg-white/[.06] hover:text-zinc-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-lime-400/60"
+          className="ml-auto flex h-6 items-center gap-1 rounded-md px-1.5 font-mono text-[10px] tracking-wider text-zinc-500 uppercase transition-colors hover:bg-white/[.06] hover:text-zinc-200 focus-visible:ring-1 focus-visible:ring-lime-400/60 focus-visible:outline-hidden"
           aria-live="polite"
         >
           {copied ? (

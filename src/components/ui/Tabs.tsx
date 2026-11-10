@@ -26,7 +26,7 @@ export function TabsList({
       )}
       {...rest}
     >
-      <Tabs.Indicator className="absolute rounded-lg border border-white/[.07] bg-[#1D1E24] shadow-sm transition-[left,width] duration-200 ease-out [height:var(--active-tab-height)] [left:var(--active-tab-left)] [top:var(--active-tab-top)] [width:var(--active-tab-width)]" />
+      <Tabs.Indicator className="absolute [top:var(--active-tab-top)] [left:var(--active-tab-left)] [height:var(--active-tab-height)] [width:var(--active-tab-width)] rounded-lg border border-white/[.07] bg-[#1D1E24] shadow-xs transition-[left,width] duration-200 ease-out" />
       {children}
     </Tabs.List>
   );
@@ -51,7 +51,7 @@ export function TabsTrigger({
       value={value}
       onClick={onActivate}
       className={cn(
-        "relative z-10 flex h-8 items-center gap-1.5 rounded-lg px-3 text-[12px] font-medium text-zinc-500 outline-none transition-colors duration-150",
+        "relative z-10 flex h-8 items-center gap-1.5 rounded-lg px-3 text-[12px] font-medium text-zinc-500 outline-hidden transition-colors duration-150",
         "hover:text-zinc-300 focus-visible:ring-2 focus-visible:ring-indigo-400/70",
         "data-[selected]:text-zinc-100",
         className,

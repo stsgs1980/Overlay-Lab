@@ -57,7 +57,7 @@ export function IssueList({
       {/* Туулбар */}
       <div className="flex flex-wrap items-center gap-2 border-b border-white/[.04] px-4 py-3 sm:px-5">
         <h1 className="text-[15px] font-semibold text-zinc-100">Очередь</h1>
-        <span className="rounded-full border border-white/[.07] px-1.5 py-0.5 font-mono text-[10px] tabular-nums text-zinc-500">
+        <span className="rounded-full border border-white/[.07] px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 tabular-nums">
           {filtered.length}
         </span>
         <div className="ml-auto flex flex-wrap items-center gap-2">
@@ -68,7 +68,7 @@ export function IssueList({
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Фильтр…"
-              className="w-24 bg-transparent text-[12px] text-zinc-200 outline-none placeholder:text-zinc-600 md:w-36"
+              className="w-24 bg-transparent text-[12px] text-zinc-200 outline-hidden placeholder:text-zinc-600 md:w-36"
             />
           </label>
           <RichPopover
@@ -80,7 +80,7 @@ export function IssueList({
           <button
             type="button"
             onClick={onNewTask}
-            className="flex h-8 items-center gap-1.5 rounded-lg bg-zinc-100 px-3 text-[12px] font-semibold text-zinc-900 transition-colors hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400/70"
+            className="flex h-8 items-center gap-1.5 rounded-lg bg-zinc-100 px-3 text-[12px] font-semibold text-zinc-900 transition-colors hover:bg-white focus-visible:ring-2 focus-visible:ring-indigo-400/70 focus-visible:outline-hidden"
           >
             <Plus size={13} strokeWidth={2.4} aria-hidden="true" />
             Новая задача
@@ -91,7 +91,7 @@ export function IssueList({
       {/* Шапка таблицы */}
       <div
         aria-hidden="true"
-        className="grid grid-cols-[1.6rem_4.2rem_1fr_auto] items-center gap-2 border-b border-white/[.05] px-4 py-1.5 font-mono text-[9px] uppercase tracking-[.18em] text-zinc-600 sm:grid-cols-[1.6rem_4.2rem_1fr_5rem_4rem_2.5rem] sm:px-5"
+        className="grid grid-cols-[1.6rem_4.2rem_1fr_auto] items-center gap-2 border-b border-white/[.05] px-4 py-1.5 font-mono text-[9px] tracking-[.18em] text-zinc-600 uppercase sm:grid-cols-[1.6rem_4.2rem_1fr_5rem_4rem_2.5rem] sm:px-5"
       >
         <span />
         <span>ID</span>
@@ -112,7 +112,7 @@ export function IssueList({
                 type="button"
                 onClick={() => onOpenIssue(issue)}
                 aria-label={`Открыть задачу ${issue.id}: ${issue.title}`}
-                className="grid w-full grid-cols-[1.6rem_4.2rem_1fr_auto] items-center gap-2 border-b border-white/[.035] px-4 py-2.5 text-left transition-colors hover:bg-white/[.025] focus-visible:bg-white/[.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-indigo-400/50 sm:grid-cols-[1.6rem_4.2rem_1fr_5rem_4rem_2.5rem] sm:px-5"
+                className="grid w-full grid-cols-[1.6rem_4.2rem_1fr_auto] items-center gap-2 border-b border-white/[.035] px-4 py-2.5 text-left transition-colors hover:bg-white/[.025] focus-visible:bg-white/[.03] focus-visible:ring-2 focus-visible:ring-indigo-400/50 focus-visible:outline-hidden focus-visible:ring-inset sm:grid-cols-[1.6rem_4.2rem_1fr_5rem_4rem_2.5rem] sm:px-5"
               >
                 <StatusIcon size={14} strokeWidth={1.8} className={STATUS_TONE[issue.status]} aria-hidden="true" />
                 <span className="font-mono text-[11px] text-zinc-600">{issue.id}</span>

@@ -59,7 +59,7 @@ export function PatternCard({ meta, demo, snippet }: PatternCardProps): JSX.Elem
       <div className="flex items-start justify-between gap-3 px-5 pt-5">
         <span
           aria-hidden="true"
-          className="font-mono text-[34px] font-semibold leading-none text-[var(--text-faint)] opacity-70"
+          className="font-mono text-[34px] leading-none font-semibold text-[var(--text-faint)] opacity-70"
         >
           {meta.index}
         </span>
@@ -67,7 +67,7 @@ export function PatternCard({ meta, demo, snippet }: PatternCardProps): JSX.Elem
           <Badge tone={meta.libraryTone} dot>
             {meta.library}
           </Badge>
-          <span className="font-mono text-[9.5px] uppercase tracking-[.16em] text-[var(--text-faint)]">
+          <span className="font-mono text-[9.5px] tracking-[.16em] text-[var(--text-faint)] uppercase">
             {meta.layer}
           </span>
         </div>
@@ -75,7 +75,7 @@ export function PatternCard({ meta, demo, snippet }: PatternCardProps): JSX.Elem
 
       {/* -- Заголовок и описание ------------------------------- */}
       <div className="px-5 pt-3">
-        <p className="font-mono text-[10px] uppercase tracking-[.2em] text-lime-500 dark:text-lime-400/80">
+        <p className="font-mono text-[10px] tracking-[.2em] text-lime-500 uppercase dark:text-lime-400/80">
           {meta.tagline}
         </p>
         <h3 className="mt-1 text-xl font-semibold tracking-tight text-[var(--text)]">{meta.title}</h3>
@@ -98,7 +98,7 @@ export function PatternCard({ meta, demo, snippet }: PatternCardProps): JSX.Elem
       </div>
 
       {/* -- Раскрываемые панели -------------------------------- */}
-      <div className="mt-auto px-5 pb-5 pt-4">
+      <div className="mt-auto px-5 pt-4 pb-5">
         <div className="flex items-center gap-2 border-t border-[var(--border)] pt-3.5">
           {(
             [
@@ -112,7 +112,7 @@ export function PatternCard({ meta, demo, snippet }: PatternCardProps): JSX.Elem
               onClick={() => toggle(id)}
               aria-expanded={open}
               aria-controls={`${meta.id}-${expands}`}
-              className="flex h-8 items-center gap-1.5 rounded-lg border border-[var(--border)] px-2.5 font-mono text-[10.5px] uppercase tracking-wider text-[var(--text-dim)] transition-colors hover:border-[var(--border-strong)] hover:text-[var(--text)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-400/60"
+              className="flex h-8 items-center gap-1.5 rounded-lg border border-[var(--border)] px-2.5 font-mono text-[10.5px] tracking-wider text-[var(--text-dim)] uppercase transition-colors hover:border-[var(--border-strong)] hover:text-[var(--text)] focus-visible:ring-2 focus-visible:ring-lime-400/60 focus-visible:outline-hidden"
             >
               {label}
               <Chevron open={open} />
@@ -121,12 +121,12 @@ export function PatternCard({ meta, demo, snippet }: PatternCardProps): JSX.Elem
         </div>
 
         {isCode && (
-          <div id={`${meta.id}-pattern-snippet`} className="mt-3 motion-safe:animate-toast-in">
+          <div id={`${meta.id}-pattern-snippet`} className="motion-safe:animate-toast-in mt-3">
             <CodeBlock code={snippet} filename={`${meta.id}/Pattern.tsx`} />
           </div>
         )}
         {isWhen && (
-          <ul id={`${meta.id}-pattern-when`} className="mt-3 space-y-1.5 motion-safe:animate-toast-in">
+          <ul id={`${meta.id}-pattern-when`} className="motion-safe:animate-toast-in mt-3 space-y-1.5">
             {meta.whenToUse.map((item) => (
               <li key={item} className="flex items-start gap-2 text-[12px] leading-snug text-[var(--text-dim)]">
                 <span aria-hidden="true" className="mt-[1px] font-mono text-lime-500 dark:text-lime-400">

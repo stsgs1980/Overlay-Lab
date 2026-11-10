@@ -30,7 +30,7 @@ export function RichPopoverDemo(): JSX.Element {
         aria-live="polite"
         className="flex h-8 items-center gap-2 rounded-lg border border-white/[.06] bg-black/30 px-3 font-mono text-[10.5px] text-zinc-500"
       >
-        <span className="h-1.5 w-1.5 shrink-0 rounded-sm bg-orange-400" aria-hidden="true" />
+        <span className="h-1.5 w-1.5 shrink-0 rounded-xs bg-orange-400" aria-hidden="true" />
         <span>
           Текущий приоритет: <span className="text-zinc-300">{PRIORITY_LABEL[priority]}</span>
         </span>

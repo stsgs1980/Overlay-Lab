@@ -21,10 +21,10 @@ export function StackMonitor(): JSX.Element {
   return (
     <div className="rounded-xl border border-[var(--border)] bg-[var(--panel)] p-4">
       <div className="flex items-center justify-between gap-3">
-        <p className="font-mono text-[10px] uppercase tracking-[.2em] text-[var(--text-faint)]">
+        <p className="font-mono text-[10px] tracking-[.2em] text-[var(--text-faint)] uppercase">
           ModalStackContext · live
         </p>
-        <span className="rounded-full border border-lime-400/25 bg-lime-400/10 px-2 py-0.5 font-mono text-[10px] tabular-nums text-lime-600 dark:text-lime-400">
+        <span className="rounded-full border border-lime-400/25 bg-lime-400/10 px-2 py-0.5 font-mono text-[10px] text-lime-600 tabular-nums dark:text-lime-400">
           depth {depth}
         </span>
       </div>
@@ -48,7 +48,7 @@ export function StackMonitor(): JSX.Element {
               >
                 <span className="font-mono text-[9px] text-[var(--text-faint)]">{index + 1}</span>
                 {entry.title}
-                <span className="rounded border border-[var(--border)] px-1 font-mono text-[8px] uppercase tracking-wider text-[var(--text-faint)]">
+                <span className="rounded border border-[var(--border)] px-1 font-mono text-[8px] tracking-wider text-[var(--text-faint)] uppercase">
                   {KIND_LABEL[entry.kind]}
                 </span>
               </span>

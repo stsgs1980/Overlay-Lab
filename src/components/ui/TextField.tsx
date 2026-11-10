@@ -27,7 +27,7 @@ export function TextField({
         placeholder={placeholder}
         className={cn(
           "h-10 rounded-xl border border-white/[.09] bg-black/30 px-3 text-sm text-zinc-100",
-          "outline-none transition-shadow placeholder:text-zinc-600",
+          "outline-hidden transition-shadow placeholder:text-zinc-600",
           "focus:border-lime-400/40 focus:ring-2 focus:ring-lime-400/25",
         )}
       />

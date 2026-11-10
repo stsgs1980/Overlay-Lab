@@ -36,7 +36,7 @@
 ## Tech Stack
 
 - **Language**: TypeScript (strict), React 19
-- **Framework**: Next.js 16 (App Router), Tailwind CSS 3
+- **Framework**: Next.js 16 (App Router), Tailwind CSS 4
 - **Overlays**: `@base-ui/react` (Dialog, Tabs), `react-aria` / `react-stately`
   (панель, палитра, поповер)
 - **Icons**: lucide-react

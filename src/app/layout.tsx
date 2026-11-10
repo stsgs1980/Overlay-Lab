@@ -30,7 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }):
       <body className="font-sans antialiased">
         <a
           href="#patterns"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-3 focus:z-[200] focus:rounded-lg focus:bg-lime-400 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-zinc-950"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-4 focus:z-[200] focus:rounded-lg focus:bg-lime-400 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-zinc-950"
         >
           К содержанию — паттерны
         </a>

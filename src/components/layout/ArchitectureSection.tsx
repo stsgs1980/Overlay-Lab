@@ -11,7 +11,7 @@ export function ArchitectureSection(): JSX.Element {
       className="scroll-mt-20 border-t border-[var(--border)] bg-[var(--panel-soft)]"
     >
       <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
-        <p className="font-mono text-[10px] uppercase tracking-[.22em] text-lime-600 dark:text-lime-400/80">
+        <p className="font-mono text-[10px] tracking-[.22em] text-lime-600 uppercase dark:text-lime-400/80">
           Архитектура
         </p>
         <h2
@@ -29,11 +29,11 @@ export function ArchitectureSection(): JSX.Element {
         <div className="mt-8 grid gap-5 lg:grid-cols-5">
           {/* Лесенка слоёв */}
           <div className="rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-5 lg:col-span-3">
-            <p className="font-mono text-[10px] uppercase tracking-[.2em] text-[var(--text-faint)]">z-index map</p>
+            <p className="font-mono text-[10px] tracking-[.2em] text-[var(--text-faint)] uppercase">z-index map</p>
             <div className="mt-4 space-y-1.5" role="list" aria-label="Слои от нижнего к верхнему">
               {LAYERS.map((layer, index) => (
                 <div key={layer.label} role="listitem" className="flex items-center gap-3">
-                  <span className="w-6 text-right font-mono text-[10px] tabular-nums text-[var(--text-faint)]">
+                  <span className="w-6 text-right font-mono text-[10px] text-[var(--text-faint)] tabular-nums">
                     {index + 1}
                   </span>
                   <div
@@ -41,7 +41,7 @@ export function ArchitectureSection(): JSX.Element {
                     style={{ width: `${34 + index * 16}%`, minWidth: "11rem" }}
                   >
                     <span className="truncate text-[11px] font-semibold text-zinc-950/85">{layer.label}</span>
-                    <span className="font-mono text-[10px] tabular-nums text-zinc-950/70">{layer.z}</span>
+                    <span className="font-mono text-[10px] text-zinc-950/70 tabular-nums">{layer.z}</span>
                   </div>
                 </div>
               ))}
@@ -60,7 +60,7 @@ export function ArchitectureSection(): JSX.Element {
               >
                 <span
                   aria-hidden="true"
-                  className="font-mono text-[22px] font-semibold leading-none text-[var(--text-faint)]"
+                  className="font-mono text-[22px] leading-none font-semibold text-[var(--text-faint)]"
                 >
                   0{index + 1}
                 </span>

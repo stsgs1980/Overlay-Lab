@@ -46,7 +46,7 @@ export function RichPopover({ open, onOpenChange, value, onChange }: RichPopover
         onClick={() => (open ? state.close() : state.open())}
         aria-haspopup="listbox"
         aria-expanded={open}
-        className="flex h-8 items-center gap-2 rounded-lg border border-[#26282C] bg-white/[.04] px-3 text-[12px] font-medium text-zinc-300 transition-colors hover:border-white/[.14] hover:text-zinc-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400/70"
+        className="flex h-8 items-center gap-2 rounded-lg border border-[#26282C] bg-white/[.04] px-3 text-[12px] font-medium text-zinc-300 transition-colors hover:border-white/[.14] hover:text-zinc-100 focus-visible:ring-2 focus-visible:ring-indigo-400/70 focus-visible:outline-hidden"
       >
         <Flag size={13} className={PRIORITY_FLAG_CLASS[value]} aria-hidden="true" />
         {PRIORITY_LABEL[value]}
@@ -67,9 +67,9 @@ export function RichPopover({ open, onOpenChange, value, onChange }: RichPopover
               aria-labelledby={labelId}
               aria-describedby={descId}
               style={{ ...popoverProps.style, zIndex: Z.popover }}
-              className="w-56 animate-palette-in overflow-hidden rounded-xl border border-[#2C2E33] bg-[#1A1B1F]/95 p-1 shadow-[0_24px_70px_-12px_rgba(0,0,0,.8),inset_0_1px_0_rgba(255,255,255,.05)] outline-none backdrop-blur-xl"
+              className="animate-palette-in w-56 overflow-hidden rounded-xl border border-[#2C2E33] bg-[#1A1B1F]/95 p-1 shadow-[0_24px_70px_-12px_rgba(0,0,0,.8),inset_0_1px_0_rgba(255,255,255,.05)] outline-hidden backdrop-blur-xl"
             >
-              <p id={labelId} className="px-2.5 pb-1 pt-2 font-mono text-[9px] uppercase tracking-[.2em] text-zinc-600">
+              <p id={labelId} className="px-2.5 pt-2 pb-1 font-mono text-[9px] tracking-[.2em] text-zinc-600 uppercase">
                 Приоритет
               </p>
               {PRIORITY_ORDER.map((level) => {
@@ -81,7 +81,7 @@ export function RichPopover({ open, onOpenChange, value, onChange }: RichPopover
                     role="option"
                     aria-selected={selected}
                     onClick={() => select(level)}
-                    className="flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-[12.5px] text-zinc-300 transition-colors hover:bg-white/[.05] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400/60"
+                    className="flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-[12.5px] text-zinc-300 transition-colors hover:bg-white/[.05] focus-visible:ring-2 focus-visible:ring-indigo-400/60 focus-visible:outline-hidden"
                   >
                     <Flag size={13} className={PRIORITY_FLAG_CLASS[level]} aria-hidden="true" />
                     <span className="flex-1 text-left">{PRIORITY_LABEL[level]}</span>
