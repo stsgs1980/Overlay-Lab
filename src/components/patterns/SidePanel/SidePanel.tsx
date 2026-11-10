@@ -3,11 +3,12 @@
 import { useDelayedUnmount } from "@/hooks/useDelayedUnmount";
 import { cn } from "@/lib/utils";
 import type { Issue, IssueComment } from "@/types/issue";
-import { PRIORITY_LABEL, STATUS_LABEL } from "@/types/issue";
-import { SendHorizontal, X } from "lucide-react";
-import type { FormEvent, JSX, KeyboardEvent } from "react";
+import type { JSX, KeyboardEvent } from "react";
 import { useEffect, useId, useRef, useState } from "react";
 import { FocusScope, OverlayContainer, useDialog } from "react-aria";
+import { PanelComments } from "./PanelComments";
+import { PanelComposer } from "./PanelComposer";
+import { PanelDetails } from "./PanelDetails";
 
 interface SidePanelProps {
   open: boolean;
@@ -55,12 +56,6 @@ export function SidePanel({ open, onClose, issue }: SidePanelProps): JSX.Element
     ]);
     setDraft("");
   };
-  const onComposerKeyDown = (event: KeyboardEvent<HTMLInputElement>): void => {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      addComment();
-    }
-  };
   const onPanelKeyDown = (event: KeyboardEvent<HTMLElement>): void => {
     if (event.key === "Escape") onClose();
   };
@@ -79,41 +74,7 @@ export function SidePanel({ open, onClose, issue }: SidePanelProps): JSX.Element
             open ? "translate-x-0 opacity-100" : "pointer-events-none translate-x-[112%] opacity-0",
           )}
         >
-          {/* -- Шапка ------------------------------------------- */}
-          <div className="flex items-center gap-2 border-b border-white/[.05] px-4 py-3">
-            <span className="rounded-md border border-white/[.08] bg-white/[.03] px-1.5 py-0.5 font-mono text-[10px] tracking-wider text-zinc-500 uppercase">
-              {issue.project}
-            </span>
-            <span className="font-mono text-[11px] text-zinc-600">{issue.id}</span>
-            <button
-              type="button"
-              onClick={onClose}
-              aria-label="Закрыть панель"
-              className="ml-auto flex h-7 w-7 items-center justify-center rounded-md text-zinc-500 transition-colors hover:bg-white/[.06] hover:text-zinc-200 focus-visible:ring-2 focus-visible:ring-indigo-400/70 focus-visible:outline-hidden"
-            >
-              <X size={15} />
-            </button>
-          </div>
-          <div className="border-b border-white/[.05] px-4 pt-3 pb-4">
-            <p id={descId} className="sr-only">
-              Детали задачи {issue.id}: статус, приоритет, исполнитель и комментарии
-            </p>
-            <h2 id={titleId} className="text-[15px] leading-snug font-medium text-zinc-100">
-              {issue.title}
-            </h2>
-            <dl className="mt-3 grid grid-cols-3 gap-2">
-              {[
-                ["Статус", STATUS_LABEL[issue.status]],
-                ["Приоритет", PRIORITY_LABEL[issue.priority]],
-                ["Исполнитель", issue.assignee.name.split(" ")[0]],
-              ].map(([label, value]) => (
-                <div key={label} className="min-w-0">
-                  <dt className="font-mono text-[8.5px] tracking-[.18em] text-zinc-600 uppercase">{label}</dt>
-                  <dd className="mt-0.5 truncate text-[12px] text-zinc-300">{value}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
+          <PanelDetails issue={issue} titleId={titleId} descId={descId} onClose={onClose} />
 
           {/* -- Комментарии ------------------------------------- */}
           <div className="flex items-center gap-2 px-4 pt-3">
@@ -122,53 +83,11 @@ export function SidePanel({ open, onClose, issue }: SidePanelProps): JSX.Element
               {comments.length}
             </span>
           </div>
-          <div ref={listRef} className="min-h-0 flex-1 space-y-3 overflow-y-auto px-4 py-3">
-            {comments.map((comment) => (
-              <figure key={comment.id} className="flex gap-2.5">
-                <span
-                  aria-hidden="true"
-                  className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[8.5px] font-bold text-zinc-950"
-                  style={{ background: comment.color }}
-                >
-                  {comment.initials}
-                </span>
-                <span className="min-w-0">
-                  <span className="flex items-baseline gap-2">
-                    <span className="text-[11.5px] font-medium text-zinc-300">{comment.author}</span>
-                    <span className="font-mono text-[9.5px] text-zinc-600">{comment.time}</span>
-                  </span>
-                  <span className="mt-0.5 block text-[12px] leading-snug text-zinc-400">{comment.body}</span>
-                </span>
-              </figure>
-            ))}
-          </div>
+
+          <PanelComments comments={comments} listRef={listRef} />
 
           {/* -- Композер ---------------------------------------- */}
-          <form
-            className="flex items-center gap-2 border-t border-white/[.05] p-3"
-            onSubmit={(e: FormEvent) => {
-              e.preventDefault();
-              addComment();
-            }}
-          >
-            <input
-              value={draft}
-              autoFocus
-              onChange={(e) => setDraft(e.target.value)}
-              onKeyDown={onComposerKeyDown}
-              placeholder="Оставить комментарий…  (Enter)"
-              aria-label="Оставить комментарий"
-              className="h-9 min-w-0 flex-1 rounded-lg border border-[#26282C] bg-white/[.03] px-3 text-[12.5px] text-zinc-100 outline-hidden transition-shadow placeholder:text-zinc-600 focus:border-indigo-400/40 focus:ring-2 focus:ring-indigo-400/20"
-            />
-            <button
-              type="submit"
-              disabled={draft.trim() === ""}
-              aria-label="Отправить комментарий"
-              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#5E6AD2] text-white transition-all hover:bg-[#6E79D6] focus-visible:ring-2 focus-visible:ring-indigo-400/70 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-40"
-            >
-              <SendHorizontal size={15} />
-            </button>
-          </form>
+          <PanelComposer draft={draft} onDraftChange={setDraft} onSubmit={addComment} />
         </aside>
       </FocusScope>
     </OverlayContainer>
