@@ -11,3 +11,4 @@
 ### Features
 
 - initial release ([d9b887a](https://github.com/stsgs1980/Overlay-Lab/commit/d9b887a0b6cbae72a259147fda4bf261cc20a57f))
+- migrate to Tailwind CSS v4 ([adfe391](https://github.com/stsgs1980/Overlay-Lab/commit/adfe391ea95f4479d7ed0c610b3a5a619a337970))
