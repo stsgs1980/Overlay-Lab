@@ -119,6 +119,12 @@ the signal.
 - Allowed types: feat, fix, docs, style, refactor, test, chore, perf, ci, build, revert.
 - Breaking changes use `type(scope)!: description` plus a `BREAKING CHANGE:` footer.
   They bump the major version and land under "Breaking Changes" in the changelog.
+- Git environment check: `git rev-parse --show-toplevel` MUST return this project's
+  root. Git walks up the directory tree and takes the first valid `.git`, so a
+  project placed inside another repository silently commits to that repository.
+  A `.git` copied without `config` and `refs/` is rejected by git and the search
+  continues upward. Run the check right after `git init` in a new folder, and
+  never move a repository by copying the folder: use `git init` at the target.
 - Do not commit directly to main. "Verified" means: approved PR, pre-commit hooks
   pass, CI is green. Direct pushes to main are only allowed for the release commit
   described below.
