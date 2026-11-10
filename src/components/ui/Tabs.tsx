@@ -1,5 +1,3 @@
-"use client";
-
 import { cn } from "@/lib/utils";
 import { Tabs } from "@base-ui/react/tabs";
 import type { JSX, ReactNode } from "react";
