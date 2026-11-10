@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --- Семантические переменные темы ------------------------- */
+:root,
+.dark {
+  --bg: #0b0c10;
+  --panel: #14161e;
+  --panel-2: #191c26;
+  --panel-soft: #0e1016;
+  --header-bg: rgb(11 12 16 / 78%);
+  --text: #e7e7ea;
+  --text-dim: #a4a4ad;
+  --text-faint: #6f6f78;
+  --border: rgb(255 255 255 / 8%);
+  --border-strong: rgb(255 255 255 / 16%);
+  --btn-2: rgb(255 255 255 / 7%);
+  --btn-2-hover: rgb(255 255 255 / 12%);
+  --btn-ghost: rgb(255 255 255 / 5%);
+  --grid-line: rgb(255 255 255 / 5%);
+
+  color-scheme: dark;
+}
+
+.light {
+  --bg: #f4f4ef;
+  --panel: #fff;
+  --panel-2: #fafaf7;
+  --panel-soft: #eceee8;
+  --header-bg: rgb(244 244 239 / 82%);
+  --text: #1d1d21;
+  --text-dim: #52525b;
+  --text-faint: #8e8e96;
+  --border: rgb(24 24 27 / 12%);
+  --border-strong: rgb(24 24 27 / 24%);
+  --btn-2: rgb(24 24 27 / 6%);
+  --btn-2-hover: rgb(24 24 27 / 10%);
+  --btn-ghost: rgb(24 24 27 / 5%);
+  --grid-line: rgb(24 24 27 / 9%);
+
+  color-scheme: light;
+}
+
+/* --- База -------------------------------------------------- */
+body {
+  background: var(--bg);
+  color: var(--text);
+  text-rendering: optimizelegibility;
+}
+
+::selection {
+  background: #c8f169;
+  color: #131503;
+}
+
+/* Тонкие скроллбары в панелях кода и списках */
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgb(128 128 138 / 35%);
+  border-radius: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+:focus-visible {
+  outline: 2px solid rgb(200 241 105 / 70%);
+  outline-offset: 2px;
+}
+
+/* --- Утилиты оформления ------------------------------------ */
+.dot-grid {
+  background-image: radial-gradient(circle, var(--grid-line) 1.1px, transparent 1.1px);
+  background-size: 22px 22px;
+}
+
+.hero-glow {
+  background:
+    radial-gradient(42rem 30rem at 12% -10%, rgb(200 241 105 / 9%), transparent 60%),
+    radial-gradient(40rem 28rem at 88% 0%, rgb(167 139 250 / 10%), transparent 55%),
+    radial-gradient(30rem 30rem at 55% 110%, rgb(200 241 105 / 5%), transparent 60%);
+}
+
+.light .hero-glow {
+  background:
+    radial-gradient(42rem 30rem at 12% -10%, rgb(120 170 20 / 14%), transparent 60%),
+    radial-gradient(40rem 28rem at 88% 0%, rgb(124 108 240 / 12%), transparent 55%);
+}
+
+/* --- Плавающие чипы в hero --------------------------------- */
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+.float-slow {
+  animation: float-y 6s ease-in-out infinite;
+}
+
+.float-slower {
+  animation: float-y 7.5s ease-in-out 0.8s infinite;
+}
+
+/* --- Доступность: уважение к prefers-reduced-motion -------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

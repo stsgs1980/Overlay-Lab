@@ -1,0 +1,120 @@
+name: CI
+
+on: [push, pull_request]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  HUSKY: 0
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      # Formatting rules must stay off: Prettier owns formatting in this repo.
+      - run: npm run lint:prettier-conflicts
+      # Advisory lane: metrics report candidates for a responsibility check,
+      # a warning here must not fail the build.
+      - run: npm run lint:metrics
+        continue-on-error: true
+      - run: npm run typecheck
+      - run: npm run check:file-length
+      - run: npm run check:docs
+      - run: npm run check:templates
+      - run: npm run check:style-consistency
+      - run: npm run lint:css
+      - run: npm run lint:md
+      # Production dependencies only: dev-only advisories are accepted with a
+      # documented mitigation in SECURITY.md, they do not ship to users.
+      - run: npm audit --omit=dev --audit-level=high
+      - run: npm run format:check
+
+  floor:
+    # Minimum from engines.node: proves install and toolchain on the floor.
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22.22.2"
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm run check:file-length
+      - run: npm run check:docs
+      - run: npm test
+
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm test
+
+  windows:
+    # Windows is the primary developer platform: run the same CLI gate set as
+    # the lint/test jobs, not a subset. The changelog job stays Linux-only
+    # because it needs full history and tags.
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run lint:prettier-conflicts
+      # Advisory lane, same as on Linux: a warning must not fail the job.
+      - run: npm run lint:metrics
+        continue-on-error: true
+      - run: npm run typecheck
+      - run: npm run lint:css
+      - run: npm run lint:md
+      - run: npm run format:check
+      - run: npm run check:file-length
+      - run: npm run check:docs
+      - run: npm run check:templates
+      - run: npm run check:style-consistency
+      - run: npm test
+      - run: npm audit --omit=dev --audit-level=high
+
+  changelog:
+    if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          # Release dates in CHANGELOG.md are anchored to git tags; without
+          # them the date drifts to the run day and the diff check fails.
+          fetch-tags: true
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run changelog
+      - run: git diff --exit-code CHANGELOG.md
