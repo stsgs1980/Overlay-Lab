@@ -52,10 +52,10 @@ export function StandardModal({ open, onOpenChange, onCreate }: StandardModalPro
   return (
     <Dialog.Root open={open} onOpenChange={(next) => onOpenChange(next)}>
       <Dialog.Portal>
-        <Dialog.Backdrop className="fixed inset-0 z-[150] bg-black/60 backdrop-blur-[3px] motion-safe:animate-backdrop-in" />
+        <Dialog.Backdrop className="motion-safe:animate-backdrop-in fixed inset-0 z-[150] bg-black/60 backdrop-blur-[3px]" />
         <Dialog.Popup
           onKeyDown={onKeyDown}
-          className="fixed left-1/2 top-1/2 z-[150] flex max-h-[86vh] w-[min(30rem,92vw)] -translate-x-1/2 -translate-y-1/2 flex-col overflow-hidden rounded-2xl border border-white/[.1] bg-[#17181D] shadow-[0_32px_80px_-16px_rgba(0,0,0,.75)] outline-none motion-safe:animate-dialog-in"
+          className="motion-safe:animate-dialog-in fixed top-1/2 left-1/2 z-[150] flex max-h-[86vh] w-[min(30rem,92vw)] -translate-x-1/2 -translate-y-1/2 flex-col overflow-hidden rounded-2xl border border-white/[.1] bg-[#17181D] shadow-[0_32px_80px_-16px_rgba(0,0,0,.75)] outline-hidden"
         >
           <ModalHeader
             icon={<SquarePen size={17} strokeWidth={1.8} />}
@@ -81,7 +81,7 @@ export function StandardModal({ open, onOpenChange, onCreate }: StandardModalPro
                 onChange={(e) => setNotes(e.target.value)}
                 placeholder="Контекст, критерии готовности…"
                 rows={3}
-                className="resize-none rounded-xl border border-white/[.09] bg-black/30 px-3 py-2 text-sm text-zinc-100 outline-none transition-shadow placeholder:text-zinc-600 focus:border-lime-400/40 focus:ring-2 focus:ring-lime-400/25"
+                className="resize-none rounded-xl border border-white/[.09] bg-black/30 px-3 py-2 text-sm text-zinc-100 outline-hidden transition-shadow placeholder:text-zinc-600 focus:border-lime-400/40 focus:ring-2 focus:ring-lime-400/25"
               />
             </div>
             <fieldset>
@@ -95,7 +95,7 @@ export function StandardModal({ open, onOpenChange, onCreate }: StandardModalPro
                     aria-checked={priority === level}
                     onClick={() => setPriority(level)}
                     className={cn(
-                      "flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-[11.5px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-400/60",
+                      "flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-[11.5px] transition-colors focus-visible:ring-2 focus-visible:ring-lime-400/60 focus-visible:outline-hidden",
                       priority === level
                         ? "border-lime-400/35 bg-lime-400/10 text-zinc-100"
                         : "border-white/[.08] bg-white/[.03] text-zinc-500 hover:text-zinc-300",
@@ -124,7 +124,7 @@ export function StandardModal({ open, onOpenChange, onCreate }: StandardModalPro
             </fieldset>
           </ModalBody>
           <ModalFooter align="between">
-            <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-600">⌘↵ — создать</span>
+            <span className="font-mono text-[10px] tracking-widest text-zinc-600 uppercase">⌘↵ — создать</span>
             <div className="flex items-center gap-2">
               <Button variant="ghost" size="sm" onClick={() => onOpenChange(false)}>
                 Отмена
@@ -133,7 +133,7 @@ export function StandardModal({ open, onOpenChange, onCreate }: StandardModalPro
                 type="button"
                 onClick={submit}
                 disabled={!canSubmit}
-                className="inline-flex h-8 items-center rounded-lg bg-zinc-100 px-3.5 text-[13px] font-semibold text-zinc-900 transition-colors hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-400/70 disabled:pointer-events-none disabled:opacity-40"
+                className="inline-flex h-8 items-center rounded-lg bg-zinc-100 px-3.5 text-[13px] font-semibold text-zinc-900 transition-colors hover:bg-white focus-visible:ring-2 focus-visible:ring-lime-400/70 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-40"
               >
                 Создать задачу
               </button>

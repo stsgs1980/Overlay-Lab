@@ -11,10 +11,10 @@ export function SiteFooter(): JSX.Element {
           </p>
         </div>
         <div className="flex flex-col items-start gap-1.5 sm:items-end">
-          <p className="font-mono text-[10px] uppercase tracking-[.16em] text-[var(--text-faint)]">
+          <p className="font-mono text-[10px] tracking-[.16em] text-[var(--text-faint)] uppercase">
             Next.js 16 · React 19 · Tailwind · Lucide
           </p>
-          <p className="font-mono text-[10px] uppercase tracking-[.16em] text-[var(--text-faint)]">
+          <p className="font-mono text-[10px] tracking-[.16em] text-[var(--text-faint)] uppercase">
             Base UI · React Aria · React Stately
           </p>
         </div>

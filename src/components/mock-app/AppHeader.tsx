@@ -30,10 +30,10 @@ export function AppHeader({ activeTab, onTabChange }: AppHeaderProps): JSX.Eleme
         href="/"
         aria-label="Вернуться на витрину паттернов"
         title="К витрине"
-        className="flex h-8 shrink-0 items-center gap-1.5 rounded-lg border border-[#26282C] bg-white/[.03] px-2 text-zinc-500 transition-colors hover:border-white/[.14] hover:text-zinc-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400/70"
+        className="flex h-8 shrink-0 items-center gap-1.5 rounded-lg border border-[#26282C] bg-white/[.03] px-2 text-zinc-500 transition-colors hover:border-white/[.14] hover:text-zinc-300 focus-visible:ring-2 focus-visible:ring-indigo-400/70 focus-visible:outline-hidden"
       >
         <ArrowLeft size={13} strokeWidth={1.8} aria-hidden="true" />
-        <span className="hidden font-mono text-[10px] uppercase tracking-[.12em] sm:inline">Витрина</span>
+        <span className="hidden font-mono text-[10px] tracking-[.12em] uppercase sm:inline">Витрина</span>
       </a>
 
       {/* Хлебные крошки */}
@@ -64,7 +64,7 @@ export function AppHeader({ activeTab, onTabChange }: AppHeaderProps): JSX.Eleme
           type="button"
           onClick={() => onTabChange("command-menu")}
           aria-label="Открыть командное меню (Ctrl или Cmd + K)"
-          className="flex h-8 items-center gap-2 rounded-lg border border-[#26282C] bg-white/[.03] px-2 text-zinc-500 transition-colors hover:border-white/[.14] hover:text-zinc-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400/70"
+          className="flex h-8 items-center gap-2 rounded-lg border border-[#26282C] bg-white/[.03] px-2 text-zinc-500 transition-colors hover:border-white/[.14] hover:text-zinc-300 focus-visible:ring-2 focus-visible:ring-indigo-400/70 focus-visible:outline-hidden"
         >
           <Command size={12} aria-hidden="true" />
           <kbd className="font-mono text-[10px]">⌘K</kbd>

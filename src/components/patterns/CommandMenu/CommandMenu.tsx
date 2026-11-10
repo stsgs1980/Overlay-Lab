@@ -74,14 +74,14 @@ export function CommandMenu({ onClose, onRun, contextLabel = "OPL · workspace" 
         aria-label="Закрыть командное меню"
         onClick={onClose}
         style={{ zIndex: Z.paletteBackdrop }}
-        className="fixed inset-0 cursor-default bg-black/55 backdrop-blur-[5px] motion-safe:animate-backdrop-in"
+        className="motion-safe:animate-backdrop-in fixed inset-0 cursor-default bg-black/55 backdrop-blur-[5px]"
       />
       <FocusScope contain restoreFocus autoFocus>
         <div
           ref={dialogRef}
           {...dialogProps}
           style={{ zIndex: Z.palette }}
-          className="fixed left-1/2 top-[13vh] w-[min(38rem,92vw)] -translate-x-1/2 animate-palette-in overflow-hidden rounded-2xl border border-white/[.09] bg-[#16181F]/85 shadow-[0_40px_110px_-20px_rgba(0,0,0,.85),inset_0_1px_0_rgba(255,255,255,.06)] outline-none backdrop-blur-2xl"
+          className="animate-palette-in fixed top-[13vh] left-1/2 w-[min(38rem,92vw)] -translate-x-1/2 overflow-hidden rounded-2xl border border-white/[.09] bg-[#16181F]/85 shadow-[0_40px_110px_-20px_rgba(0,0,0,.85),inset_0_1px_0_rgba(255,255,255,.06)] outline-hidden backdrop-blur-2xl"
         >
           {/* Скрытый заголовок связывается с aria-labelledby */}
           <VisuallyHidden>
@@ -103,9 +103,9 @@ export function CommandMenu({ onClose, onRun, contextLabel = "OPL · workspace" 
               placeholder="Поиск действий, разделов и страниц…"
               autoComplete="off"
               spellCheck={false}
-              className="h-14 w-full bg-transparent text-[15px] text-zinc-100 outline-none placeholder:text-zinc-600"
+              className="h-14 w-full bg-transparent text-[15px] text-zinc-100 outline-hidden placeholder:text-zinc-600"
             />
-            <kbd className="shrink-0 rounded-md border border-white/[.1] bg-white/[.05] px-1.5 py-0.5 font-mono text-[9.5px] uppercase text-zinc-500">
+            <kbd className="shrink-0 rounded-md border border-white/[.1] bg-white/[.05] px-1.5 py-0.5 font-mono text-[9.5px] text-zinc-500 uppercase">
               esc
             </kbd>
           </div>
@@ -119,7 +119,7 @@ export function CommandMenu({ onClose, onRun, contextLabel = "OPL · workspace" 
               <div key={group}>
                 {gi > 0 && <div role="separator" aria-hidden="true" className="my-1.5 h-px bg-white/[.06]" />}
                 <div role="group" aria-label={group}>
-                  <p className="px-3 pb-1 pt-2 font-mono text-[9px] uppercase tracking-[.2em] text-zinc-600">{group}</p>
+                  <p className="px-3 pt-2 pb-1 font-mono text-[9px] tracking-[.2em] text-zinc-600 uppercase">{group}</p>
                   {items.map((cmd) => {
                     const Icon = cmd.icon;
                     const index = filtered.indexOf(cmd);
@@ -134,7 +134,7 @@ export function CommandMenu({ onClose, onRun, contextLabel = "OPL · workspace" 
                         onMouseEnter={() => setActiveIndex(index)}
                         onClick={() => onRun(cmd)}
                         className={cn(
-                          "flex w-full items-center gap-3 rounded-xl px-3 py-2 text-left text-[13px] transition-colors focus-visible:outline-none",
+                          "flex w-full items-center gap-3 rounded-xl px-3 py-2 text-left text-[13px] transition-colors focus-visible:outline-hidden",
                           active ? "bg-white/[.07] text-zinc-100" : "text-zinc-400",
                         )}
                       >
@@ -149,7 +149,7 @@ export function CommandMenu({ onClose, onRun, contextLabel = "OPL · workspace" 
                           <Icon size={14} strokeWidth={1.8} />
                         </span>
                         <span className="min-w-0 flex-1 truncate">{cmd.label}</span>
-                        <span className="shrink-0 font-mono text-[9px] uppercase tracking-[.14em] text-zinc-600">
+                        <span className="shrink-0 font-mono text-[9px] tracking-[.14em] text-zinc-600 uppercase">
                           {cmd.group === "Навигация" ? "go to" : "run"}
                         </span>
                       </button>
@@ -171,7 +171,7 @@ export function CommandMenu({ onClose, onRun, contextLabel = "OPL · workspace" 
             <span className="flex items-center gap-1.5">
               <kbd className="rounded border border-white/[.12] px-1">↵</kbd>запуск
             </span>
-            <span className="ml-auto hidden font-mono text-[9.5px] uppercase tracking-[.14em] text-zinc-700 sm:block">
+            <span className="ml-auto hidden font-mono text-[9.5px] tracking-[.14em] text-zinc-700 uppercase sm:block">
               {contextLabel} · {shortcutLabel("K")}
             </span>
           </div>

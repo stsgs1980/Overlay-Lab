@@ -19,7 +19,7 @@ export function ThemeToggle(): JSX.Element {
       aria-pressed={isDark}
       aria-label={isDark ? "Включить светлую тему" : "Включить тёмную тему"}
       title={isDark ? "Светлая тема" : "Тёмная тема"}
-      className="flex h-9 w-9 items-center justify-center rounded-lg border border-[var(--border)] text-[var(--text-dim)] transition-colors hover:border-[var(--border-strong)] hover:text-[var(--text)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-400/60"
+      className="flex h-9 w-9 items-center justify-center rounded-lg border border-[var(--border)] text-[var(--text-dim)] transition-colors hover:border-[var(--border-strong)] hover:text-[var(--text)] focus-visible:ring-2 focus-visible:ring-lime-400/60 focus-visible:outline-hidden"
     >
       {isDark ? (
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">

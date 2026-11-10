@@ -12,14 +12,14 @@ export function HeroArt(): JSX.Element {
         <div className="absolute inset-0 bg-black/45" />
 
         {/* Тень родительского «окна» под попапом */}
-        <div className="absolute left-[8%] top-[30%] h-56 w-64 rounded-xl border border-white/[.07] bg-[#1B1E29] shadow-2xl sm:h-64 sm:w-72" />
+        <div className="absolute top-[30%] left-[8%] h-56 w-64 rounded-xl border border-white/[.07] bg-[#1B1E29] shadow-2xl sm:h-64 sm:w-72" />
 
         {/* Главный «модальный» попап */}
-        <div className="absolute left-[16%] top-[38%] w-60 rounded-xl border border-white/[.12] bg-[#1F2230] shadow-2xl shadow-black/60 sm:w-72">
+        <div className="absolute top-[38%] left-[16%] w-60 rounded-xl border border-white/[.12] bg-[#1F2230] shadow-2xl shadow-black/60 sm:w-72">
           <div className="flex items-center gap-2 border-b border-white/[.07] px-3.5 py-2.5">
             <span className="h-2 w-2 rounded-full bg-lime-400/90" />
             <span className="h-1.5 w-20 rounded-full bg-white/[.14]" />
-            <span className="ml-auto h-2.5 w-2.5 rounded-sm bg-white/[.1]" />
+            <span className="ml-auto h-2.5 w-2.5 rounded-xs bg-white/[.1]" />
           </div>
           <div className="space-y-2 px-3.5 py-3.5">
             <div className="h-2 w-3/4 rounded-full bg-white/[.13]" />
@@ -33,7 +33,7 @@ export function HeroArt(): JSX.Element {
         </div>
 
         {/* Призрачный чип ⌘K поверх всего */}
-        <div className="float-slow absolute right-[7%] top-[14%] flex items-center gap-2 rounded-xl border border-white/[.12] bg-[#181B26]/95 px-3 py-2 shadow-xl shadow-black/50 backdrop-blur">
+        <div className="float-slow absolute top-[14%] right-[7%] flex items-center gap-2 rounded-xl border border-white/[.12] bg-[#181B26]/95 px-3 py-2 shadow-xl shadow-black/50 backdrop-blur">
           <kbd className="rounded-md border border-white/[.14] bg-white/[.06] px-1.5 py-0.5 font-mono text-[10px] text-lime-300">
             ⌘K
           </kbd>
@@ -46,12 +46,12 @@ export function HeroArt(): JSX.Element {
             <circle cx="7" cy="7" r="4.5" stroke="#C8F169" strokeWidth="1.5" strokeDasharray="3 2.4" />
             <circle cx="7" cy="7" r="1.4" fill="#C8F169" />
           </svg>
-          <span className="font-mono text-[10px] uppercase tracking-[.12em] text-zinc-400">focus trap</span>
+          <span className="font-mono text-[10px] tracking-[.12em] text-zinc-400 uppercase">focus trap</span>
         </div>
       </div>
 
       {/* Подпись слоя под иллюстрацией */}
-      <div className="mt-3 flex items-center justify-between px-1 font-mono text-[10px] uppercase tracking-[.16em] text-[var(--text-faint)]">
+      <div className="mt-3 flex items-center justify-between px-1 font-mono text-[10px] tracking-[.16em] text-[var(--text-faint)] uppercase">
         <span>backdrop → dialog · panel → palette</span>
         <span>z: 130–180</span>
       </div>

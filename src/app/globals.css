@@ -1,6 +1,16 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
+
+/* Tailwind 4 не читает darkMode из JS-конфига — вариант объявляется в CSS. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Preflight v4 сменил курсор кнопок на default — возвращаем v3-поведение. */
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
 
 /* --- Семантические переменные темы ------------------------- */
 :root,

@@ -17,7 +17,7 @@ export function Badge({ tone = "zinc", dot = false, className, children, ...rest
     <span
       className={cn(
         "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5",
-        "font-mono text-[10.5px] font-medium uppercase tracking-[.08em]",
+        "font-mono text-[10.5px] font-medium tracking-[.08em] uppercase",
         tones.chip,
         className,
       )}

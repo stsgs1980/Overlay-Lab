@@ -16,7 +16,7 @@ export function ModalHeader({ icon, title, description }: ModalHeaderProps): JSX
         </span>
       )}
       <div className="min-w-0 flex-1">
-        <Dialog.Title className="text-[15px] font-semibold leading-snug text-zinc-100">{title}</Dialog.Title>
+        <Dialog.Title className="text-[15px] leading-snug font-semibold text-zinc-100">{title}</Dialog.Title>
         {description && (
           <Dialog.Description className="mt-1 text-[12.5px] leading-snug text-zinc-500">
             {description}
@@ -25,7 +25,7 @@ export function ModalHeader({ icon, title, description }: ModalHeaderProps): JSX
       </div>
       <Dialog.Close
         aria-label="Закрыть"
-        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-zinc-500 transition-colors hover:bg-white/[.06] hover:text-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-400/60"
+        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-zinc-500 transition-colors hover:bg-white/[.06] hover:text-zinc-200 focus-visible:ring-2 focus-visible:ring-lime-400/60 focus-visible:outline-hidden"
       >
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
           <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />

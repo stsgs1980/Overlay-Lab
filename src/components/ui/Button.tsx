@@ -37,9 +37,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
       type="button"
       disabled={disabled || isLoading}
       className={cn(
-        "inline-flex select-none items-center justify-center whitespace-nowrap border font-medium",
+        "inline-flex items-center justify-center border font-medium whitespace-nowrap select-none",
         "transition-all duration-150 active:scale-[.98]",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg)]",
+        "focus-visible:ring-2 focus-visible:ring-lime-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg)] focus-visible:outline-hidden",
         "disabled:pointer-events-none disabled:opacity-45",
         VARIANTS[variant],
         SIZES[size],

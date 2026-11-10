@@ -26,7 +26,7 @@ export function ShowcaseGrid(): JSX.Element {
     >
       <div className="flex flex-wrap items-end justify-between gap-6">
         <div className="max-w-xl">
-          <p className="font-mono text-[10px] uppercase tracking-[.22em] text-lime-600 dark:text-lime-400/80">
+          <p className="font-mono text-[10px] tracking-[.22em] text-lime-600 uppercase dark:text-lime-400/80">
             Паттерны
           </p>
           <h2
@@ -42,7 +42,7 @@ export function ShowcaseGrid(): JSX.Element {
         </div>
         <a
           href="/app"
-          className="group inline-flex items-center gap-1.5 rounded font-mono text-[10px] uppercase tracking-[.18em] text-lime-600 transition-colors hover:text-lime-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-400/60 dark:text-lime-400/80 dark:hover:text-lime-300"
+          className="group inline-flex items-center gap-1.5 rounded font-mono text-[10px] tracking-[.18em] text-lime-600 uppercase transition-colors hover:text-lime-500 focus-visible:ring-2 focus-visible:ring-lime-400/60 focus-visible:outline-hidden dark:text-lime-400/80 dark:hover:text-lime-300"
         >
           Демо-приложение в стиле Linear
           <svg
