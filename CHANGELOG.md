@@ -4,6 +4,7 @@
 
 ### Bug Fixes
 
+- enforce LF line endings for CSS files in .gitattributes ([7e2ea19](https://github.com/stsgs1980/Overlay-Lab/commit/7e2ea19c92c7b66b3754aaebe361981cdb8b5cb5))
 - resolve WebStorm inspection findings and fix npm ci on node 22 ([e1c7d9a](https://github.com/stsgs1980/Overlay-Lab/commit/e1c7d9a62a0d5400b8c6c2a3d3699e4a5b570856))
 
 ### Features
